@@ -1,0 +1,18 @@
+{
+    main_module_name => 'JSON::Functions::XS',
+    file_names => [qw(
+        lib/JSON/Functions/XS.pm
+        lib/JSON/Functions/XS.pod
+        t/json-functions-xs.t
+        config/json-functions-xs.pi
+    )],
+    req_modules => {
+        'JSON::XS' => 0,
+        'Encode' => 0,
+    },
+    t_req_modules => {
+        'Path::Class' => 0,
+        'Test::More' => 0,
+        'Test::Class' => 0,
+    },
+};

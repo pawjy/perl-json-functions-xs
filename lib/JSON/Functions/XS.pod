@@ -1,0 +1,90 @@
+=head1 NAME
+
+JSON::Functions::XS - Easy-to-use functional JSON-Perl convertions 
+
+=head1 SYNOPSIS
+
+  use JSON::Functions::XS qw(json_bytes2perl perl2json_bytes);
+  
+  print perl2json_bytes $obj;
+  print json_bytes2perl $json;
+
+=head1 DESCRIPTION
+
+The C<JSON::Functions::XS> module provides various useful functions to
+decode or encode JSON data.  These functions are wrappers; actual
+conversion is enforced by the L<JSON::XS> module.
+
+=head1 FUNCTIONS
+
+No function is exposed by default - you have to specify one or more
+functions to use after the module name:
+
+  use JSON::Functions::XS qw(json_bytes2perl json_chars2perl);
+
+=item $perl_obj = json_bytes2perl $json_byte_string
+
+Converts a JSON data represented as a byte string encoded in C<utf8>
+into Perl data structure.
+
+=item $perl_obj = json_chars2perl $json_char_string
+
+Converts a JSON data represented as a character string into Perl data
+structure.
+
+=item $perl_obj = file2perl $path_class_file
+
+Converts a JSON contained in a file encoded in C<utf8> specified by
+the L<Path::Class::File> object into Perl data structure.
+
+=item $json_byte_string = perl2json_bytes $perl_obj
+
+Converts a Perl data into JSON represented as a byte string encoded in
+C<utf8>.
+
+=item $json_byte_string = perl2json_bytes_for_record $perl_obj
+
+Converts a Perl data into JSON represented as a byte string encoded in
+C<utf8>, pretty-printed.
+
+=item $json_char_string = perl2json_chars $perl_obj
+
+Converts a Perl data into JSON represented as a character string.
+
+=item $json_char_string = perl2json_chars_for_record $perl_obj
+
+Converts a Perl data into JSON represented as a character string,
+pretty-printed.
+
+=back
+
+=head1 SEE ALSO
+
+L<JSON::XS>.
+
+L<Path::Class>.
+
+RFC 4627 (JSON) <http://tools.ietf.org/html/rfc4627>.
+
+=head1 HISTORY
+
+=over 4
+
+=item 1.0 (2010-08-18)
+
+First packaged version.
+
+=back
+
+=head1 AUTHOR
+
+Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>
+
+=head1 LICENSE
+
+Copyright 2009-2010 Hatena <http://www.hatena.ne.jp/>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
