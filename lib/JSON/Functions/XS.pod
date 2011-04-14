@@ -22,6 +22,8 @@ functions to use after the module name:
 
   use JSON::Functions::XS qw(json_bytes2perl json_chars2perl);
 
+=over 4
+
 =item $perl_obj = json_bytes2perl $json_byte_string
 
 Converts a JSON data represented as a byte string encoded in C<utf8>
