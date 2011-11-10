@@ -68,6 +68,8 @@ L<Path::Class>.
 
 RFC 4627 (JSON) <http://tools.ietf.org/html/rfc4627>.
 
+ECMAScript5 The JSON Object <http://es5.github.com/#x15.12>.
+
 =head1 HISTORY
 
 =over 4
@@ -75,6 +77,10 @@ RFC 4627 (JSON) <http://tools.ietf.org/html/rfc4627>.
 =item 1.0 (2010-08-18)
 
 First packaged version.
+
+=item 1.1 (2011-09-15)
+
+Improved UTF-7 safeness.
 
 =back
 
@@ -84,7 +90,7 @@ Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>
 
 =head1 LICENSE
 
-Copyright 2009-2010 Hatena <http://www.hatena.ne.jp/>
+Copyright 2009-2011 Hatena <http://www.hatena.ne.jp/>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

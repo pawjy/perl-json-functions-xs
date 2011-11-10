@@ -1,7 +1,7 @@
 package JSON::Functions::XS;
 use strict;
 use warnings;
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 use Exporter::Lite;
 use JSON::XS;
 use Encode;
@@ -28,29 +28,49 @@ sub json_chars2perl ($) {
 }
 
 sub json_bytes2perl ($) {
-    return json_chars2perl decode 'utf8', $_[0];
+    return json_chars2perl decode 'utf-8', $_[0];
 }
 
 sub file2perl ($) {
     my $file = shift;
     my $json = $file->slurp or die "$file: $!";
-    return json_chars2perl decode 'utf8', $json;
+    return json_chars2perl decode 'utf-8', $json;
 }
 
 sub perl2json_chars ($) {
-    return $jsonc->encode($_[0]);
+    my $t = eval { $jsonc->encode($_[0]) } || do { warn $@; 'null' };
+    if (defined $t) {
+        $t =~ s/</\\u003C/g;
+        $t =~ s/\+/\\u002B/g;
+    }
+    return $t;
 }
 
 sub perl2json_chars_for_record ($) {
-    return $jsoncr->encode($_[0]);
+    my $t = eval { $jsoncr->encode($_[0]) } || do { warn $@; 'null' };
+    if (defined $t) {
+        $t =~ s/</\\u003C/g;
+        $t =~ s/\+/\\u002B/g;
+    }
+    return $t;
 }
 
 sub perl2json_bytes ($) {
-    return $jsonb->encode($_[0]);
+    my $t = eval { $jsonb->encode($_[0]) } || do { warn $@; 'null' };
+    if (defined $t) {
+        $t =~ s/</\\u003C/g;
+        $t =~ s/\+/\\u002B/g;
+    }
+    return $t;
 }
 
 sub perl2json_bytes_for_record ($) {
-    return $jsonr->encode($_[0]);
+    my $t = eval { $jsonr->encode($_[0]) } || do { warn $@; 'null' };
+    if (defined $t) {
+        $t =~ s/</\\u003C/g;
+        $t =~ s/\+/\\u002B/g;
+    }
+    return $t;
 }
 
 1;
