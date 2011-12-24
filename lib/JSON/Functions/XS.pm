@@ -17,14 +17,21 @@ our @EXPORT_OK = qw(
     perl2json_bytes_for_record
 );
 
-my $jsonc = JSON::XS->new->allow_blessed->convert_blessed;
-my $jsoncr = JSON::XS->new->allow_blessed->convert_blessed->pretty->canonical;
-my $jsonb = JSON::XS->new->utf8->allow_blessed->convert_blessed;
-my $jsonr = JSON::XS->new->utf8->allow_blessed->convert_blessed->pretty->canonical;
+my $jsonc = JSON::XS->new->allow_blessed->convert_blessed->allow_nonref;
+my $jsoncr = JSON::XS->new->allow_blessed->convert_blessed->allow_nonref->pretty->canonical;
+my $jsonb = JSON::XS->new->utf8->allow_blessed->convert_blessed->allow_nonref;
+my $jsonr = JSON::XS->new->utf8->allow_blessed->convert_blessed->allow_nonref->pretty->canonical;
 
 sub json_chars2perl ($) {
     local $@;
-    return eval { $jsonc->decode($_[0]) } || do { warn $@; undef };
+    for (eval { $jsonc->decode($_[0]) }) {
+        if ($@) {
+            warn $@;
+            return undef;
+        } else {
+            return $_;
+        }
+    }
 }
 
 sub json_bytes2perl ($) {
@@ -38,7 +45,11 @@ sub file2perl ($) {
 }
 
 sub perl2json_chars ($) {
-    my $t = eval { $jsonc->encode($_[0]) } || do { warn $@; 'null' };
+    my $t = eval { $jsonc->encode($_[0]) };
+    if ($@) {
+        warn $@;
+        return 'null';
+    }
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
@@ -47,7 +58,11 @@ sub perl2json_chars ($) {
 }
 
 sub perl2json_chars_for_record ($) {
-    my $t = eval { $jsoncr->encode($_[0]) } || do { warn $@; 'null' };
+    my $t = eval { $jsoncr->encode($_[0]) };
+    if ($@) {
+        warn $@;
+        return 'null';
+    }
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
@@ -56,7 +71,11 @@ sub perl2json_chars_for_record ($) {
 }
 
 sub perl2json_bytes ($) {
-    my $t = eval { $jsonb->encode($_[0]) } || do { warn $@; 'null' };
+    my $t = eval { $jsonb->encode($_[0]) };
+    if ($@) {
+        warn $@;
+        return 'null';
+    }
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
@@ -65,7 +84,11 @@ sub perl2json_bytes ($) {
 }
 
 sub perl2json_bytes_for_record ($) {
-    my $t = eval { $jsonr->encode($_[0]) } || do { warn $@; 'null' };
+    my $t = eval { $jsonr->encode($_[0]) };
+    if ($@) {
+        warn $@;
+        return 'null';
+    }
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
