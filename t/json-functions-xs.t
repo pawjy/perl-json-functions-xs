@@ -90,7 +90,7 @@ sub _json_bytes2perl_string_utf8_char : Test(1) {
     eq_or_diff json_bytes2perl qq{"\x{6000}"}, "\x{6000}";
 }
 
-sub _json_bytes2perl_string_utf8_char : Test(1) {
+sub _json_bytes2perl_string_utf8_char_2 : Test(1) {
     eq_or_diff json_bytes2perl u8 qq{"\x{6000}"}, "\x{6000}";
 }
 

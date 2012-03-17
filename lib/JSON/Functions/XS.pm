@@ -35,7 +35,7 @@ sub json_chars2perl ($) {
 }
 
 sub json_bytes2perl ($) {
-    return json_chars2perl decode 'utf-8', $_[0];
+    return json_chars2perl(eval { decode 'utf-8', $_[0] } || $_[0]);
 }
 
 sub file2perl ($) {
