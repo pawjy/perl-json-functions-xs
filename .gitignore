@@ -1,0 +1,6 @@
+*~
+local/
+.carton/
+config/perl/libs.txt
+config/perl/submodules.txt
+Makefile.setupenv
