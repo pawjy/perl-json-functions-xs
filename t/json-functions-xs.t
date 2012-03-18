@@ -65,10 +65,6 @@ sub _json_bytes2perl_2 : Test(1) {
     is_deeply json_bytes2perl('{"a":"b","c": "'.(encode 'utf8', "\x{3000}").'"}'), {qw/a b c/, "\x{3000}"};
 }
 
-sub _json_bytes2perl_broken : Test(1) {
-    eq_or_diff json_bytes2perl('{"a":"b",'), undef;
-}
-
 sub _json_bytes2perl_literal : Test(1) {
     eq_or_diff json_bytes2perl "null", undef;
 }
@@ -98,8 +94,44 @@ sub _json_bytes2perl_string_empty : Test(1) {
     eq_or_diff json_bytes2perl '""', '';
 }
 
+sub _json_bytes2perl_string_empty_2 : Test(1) {
+    eq_or_diff json_bytes2perl qq<  ""  \n>, '';
+}
+
+sub _json_bytes2perl_string_single : Test(1) {
+    eq_or_diff json_bytes2perl "''", undef;
+}
+
+sub _json_bytes2perl_string_single_2 : Test(1) {
+    eq_or_diff json_bytes2perl "'abc'", undef;
+}
+
+sub _json_bytes2perl_string_sp : Test(1) {
+    eq_or_diff json_bytes2perl '" "', ' ';
+}
+
 sub _json_bytes2perl_zero : Test(1) {
     eq_or_diff json_bytes2perl '0', 0;
+}
+
+sub _json_bytes2perl_undef : Test(1) {
+    eq_or_diff json_bytes2perl undef, undef;
+}
+
+sub _json_bytes2perl_empty : Test(1) {
+    eq_or_diff json_bytes2perl '', undef;
+}
+
+sub _json_bytes2perl_empty_2 : Test(1) {
+    eq_or_diff json_bytes2perl "\n", undef;
+}
+
+sub _json_bytes2perl_broken : Test(1) {
+    eq_or_diff json_bytes2perl 'abcdef', undef;
+}
+
+sub _json_bytes2perl_broken_2 : Test(1) {
+    eq_or_diff json_bytes2perl('{"a":"b",'), undef;
 }
 
 # ------ perl2json_chars ------
@@ -117,7 +149,8 @@ sub _perl2json_chars_lt : Test(1) {
 }
 
 sub _perl2json_chars_unicode : Test(1) {
-    is perl2json_chars({qw/a b c/, "\x{3000}\x{D800}"}), 'null';
+    is perl2json_chars({qw/a b c/, "\x{3000}\x{D800}"}),
+        qq{{"c":"\x{3000}\x{D800}","a":"b"}};
 }
 
 sub _perl2json_chars_null : Test(1) {
@@ -154,7 +187,11 @@ sub _perl2json_chars_for_record_lt : Test(1) {
 }
 
 sub _perl2json_chars_unicode_for_record : Test(1) {
-    is perl2json_chars_for_record({qw/a b c/, "\x{3000}\x{D800}"}), 'null';
+    is perl2json_chars_for_record({qw/a b c/, "\x{3000}\x{D800}"}), qq{{
+   "a" : "b",
+   "c" : "\x{3000}\x{D800}"
+}
+};
 }
 
 sub _perl2json_c4r : Test(1) {
@@ -202,7 +239,8 @@ sub _perl2json_bytes_lt : Test(1) {
 }
 
 sub _perl2json_bytes_unicode : Test(1) {
-    is perl2json_bytes({qw/a b c/, "\x{3000}\x{D800}"}), 'null';
+    eq_or_diff perl2json_bytes({qw/a b c/, "\x{3000}\x{D800}"}),
+        qq{{"c":"\xe3\x80\x80\xed\xa0\x80","a":"b"}};
 }
 
 sub _perl2json_bytes_null : Test(1) {
@@ -240,7 +278,11 @@ sub _perl2json_bytes_for_record_lt : Test(1) {
 }
 
 sub _perl2json_bytes_for_record_unicode : Test(1) {
-    is perl2json_bytes_for_record({qw/a b c/, "\x{3000}\x{D800}"}), 'null';
+    eq_or_diff perl2json_bytes_for_record({qw/a b c/, "\x{3000}\x{D800}"}), qq{{
+   "a" : "b",
+   "c" : "\xe3\x80\x80\xed\xa0\x80"
+}
+};
 }
 
 sub _perl2json_b4r : Test(1) {

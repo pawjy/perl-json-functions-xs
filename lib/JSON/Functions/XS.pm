@@ -24,7 +24,7 @@ my $jsonr = JSON::XS->new->utf8->allow_blessed->convert_blessed->allow_nonref->p
 
 sub json_chars2perl ($) {
     local $@;
-    for (eval { $jsonc->decode($_[0]) }) {
+    for (scalar eval { $jsonc->decode($_[0]) }) {
         if ($@) {
             warn $@;
             return undef;
