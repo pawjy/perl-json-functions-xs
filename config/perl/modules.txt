@@ -1,3 +1,7 @@
 Encode
 Exporter::Lite
 JSON::XS
+Path::Class
+Test::Class
+Test::Differences
+Test::More
