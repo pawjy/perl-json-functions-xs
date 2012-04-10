@@ -24,6 +24,8 @@ safetest: test-deps safetest-main
 
 safetest-main:
 	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
+	perl t/test.t
+	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
 	perl t/json-functions-xs.t
 	#    $(PROVE) t/*.t
 
