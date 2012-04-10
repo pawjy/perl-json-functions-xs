@@ -9,6 +9,7 @@ Makefile.setupenv:
 
 local-perl perl-version perl-exec \
 config/perl/libs.txt carton-install carton-update carton-install-module \
+remotedev-test \
 generatepm: %: Makefile-setupenv
 	$(MAKE) --makefile Makefile.setupenv $@
 
@@ -18,23 +19,11 @@ PERL_PATH = $(abspath local/perlbrew/perls/perl-$(PERL_VERSION)/bin)
 
 test: safetest
 
-PERL = $(perl)
-CARTON_SUPPORT_BIN_PATH = $(abspath local/perl-$(PERL_VERSION)/carton/bin)
-CPANM = $(PERL) $(CARTON_SUPPORT_BIN_PATH)/cpanm
-
 test-deps: carton-install config/perl/libs.txt
-	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
-	$(CPANM) --notest -l local/perl-latest/lib --reinstall JSON::XS
 
 safetest: test-deps safetest-main
 
 safetest-main:
-	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
-	perl -c t/test.t
-	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
-	perl t/test.t
-	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
-	perl t/json-functions-xs.t
 	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
 	    $(PROVE) t/*.t
 
