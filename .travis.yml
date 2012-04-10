@@ -1,9 +1,9 @@
 perl:
   - "5.14"
+  - "5.10"
 before_install: git submodule update --init
-#install: "make local-perl test-deps PERL_VERSION=5.14.2"
-#script: "make test"
-script: "make safetest"
+install: "make test-deps"
+script: "make test"
 notifications:
   email:
     - wakaba.5081@gmail.com
