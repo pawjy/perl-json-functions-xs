@@ -70,6 +70,26 @@ RFC 4627 (JSON) <http://tools.ietf.org/html/rfc4627>.
 
 ECMAScript5 The JSON Object <http://es5.github.com/#x15.12>.
 
+=head1 DEVELOPMENT
+
+Latest version of the module is available from the GitHub repository:
+
+=over 4
+
+=item GitHub
+
+<https://github.com/wakaba/perl-json-functions-xs>.
+
+=item Travis CI
+
+<http://travis-ci.org/wakaba/perl-json-functions-xs>.
+
+=item Tarball
+
+<http://wakaba.github.com/packages/perl/#JSON-Functions-XS>.
+
+=back
+
 =head1 HISTORY
 
 =over 4
