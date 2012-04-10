@@ -16,7 +16,11 @@ PROVE = prove
 PERL_VERSION = latest
 PERL_PATH = $(abspath local/perlbrew/perls/perl-$(PERL_VERSION)/bin)
 
-test: carton-install config/perl/libs.txt
+test: test-deps safetest
+
+test-deps: carton-install config/perl/libs.txt
+
+safetest:
 	PATH=$(PERL_PATH):$(PATH) PERL5LIB=$(shell cat config/perl/libs.txt) \
 	    $(PROVE) t/*.t
 
