@@ -19,5 +19,8 @@
         git => {
             GitHub => q<https://github.com/wakaba/perl-json-functions-xs>,
         },
+        ci => {
+            "Travis CI" => q<http://travis-ci.org/wakaba/perl-json-functions-xs>,
+        }, 
     },
 };
