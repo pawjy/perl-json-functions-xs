@@ -1,0 +1,14 @@
+Test::Class~0.37
+Test::Exception~0.31
+Sub::Uplevel~0.24
+MRO::Compat~0.11
+File::ShareDir::Install~0.04
+Path::Class~0.26
+inc::latest~0.4001
+JSON::XS~2.32
+common::sense~3.6
+Exporter::Lite~0.02
+Test::Differences~0.61
+Text::Diff~1.41
+ExtUtils::ParseXS~3.15
+Algorithm::Diff~1.1902
