@@ -134,6 +134,11 @@ sub _json_bytes2perl_broken_2 : Test(1) {
     eq_or_diff json_bytes2perl('{"a":"b",'), undef;
 }
 
+sub _json_bytes2perl_2028 : Test(1) {
+    eq_or_diff json_bytes2perl(encode 'utf-8', qq{{"\x{2028}":"\x{2029}"}}),
+        {"\x{2028}" => "\x{2029}"};
+}
+
 # ------ perl2json_chars ------
 
 sub _perl2json_chars_undef : Test(1) {
@@ -175,6 +180,11 @@ sub _perl2json_chars_string_empty : Test(1) {
 
 sub _perl2json_chars_zero : Test(1) {
     eq_or_diff perl2json_chars 0, '0';
+}
+
+sub _perl2json_chars_u2028 : Test(1) {
+    eq_or_diff perl2json_chars {"\x{2028}\x{2029}" => "\x{2028}\x{2029}"},
+        q<{"\\u2028\\u2029":"\\u2028\\u2029"}>;
 }
 
 # ------ perl2json_chars_for_record ------
@@ -227,6 +237,13 @@ sub _perl2json_chars_for_record_zero : Test(1) {
     eq_or_diff perl2json_chars_for_record 0, '0' . "\x0A";
 }
 
+sub _perl2json_chars_for_record_u2028 : Test(1) {
+    eq_or_diff perl2json_chars_for_record {"\x{2028}\x{2029}" => "\x{2028}\x{2029}"}, q<{
+   "\\u2028\\u2029" : "\\u2028\\u2029"
+}
+>;
+}
+
 # ------ perl2json_bytes ------
 
 sub _perl2json_bytes : Test(1) {
@@ -266,6 +283,11 @@ sub _perl2json_bytes_string_empty : Test(1) {
 
 sub _perl2json_bytes_zero : Test(1) {
     eq_or_diff perl2json_bytes 0, '0';
+}
+
+sub _perl2json_bytes_u2028 : Test(1) {
+    eq_or_diff perl2json_bytes {"\x{2028}\x{4000}\x{2029}" => "\x{2028}\x{2029}"},
+        qq<{"\\u2028\xe4\x80\x80\\u2029":"\\u2028\\u2029"}>;
 }
 
 # ------ perl2json_bytes_for_record ------
@@ -318,6 +340,13 @@ sub _perl2json_bytes_for_record_string_empty : Test(1) {
 
 sub _perl2json_bytes_for_record_zero : Test(1) {
     eq_or_diff perl2json_bytes_for_record 0, '0' . "\x0A";
+}
+
+sub _perl2json_bytes_for_record_u2028 : Test(1) {
+    eq_or_diff perl2json_bytes_for_record {"\x{2028}\x{4000}\x{2029}" => "\x{2028}\x{2029}"}, qq<{
+   "\\u2028\xe4\x80\x80\\u2029" : "\\u2028\\u2029"
+}
+>;
 }
 
 __PACKAGE__->runtests;

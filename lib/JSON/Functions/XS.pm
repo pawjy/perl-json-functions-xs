@@ -1,7 +1,7 @@
 package JSON::Functions::XS;
 use strict;
 use warnings;
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 use Exporter::Lite;
 use JSON::XS;
 use Encode;
@@ -53,6 +53,8 @@ sub perl2json_chars ($) {
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
+        $t =~ s/\x{2028}/\\u2028/g;
+        $t =~ s/\x{2029}/\\u2029/g;
     }
     return $t;
 }
@@ -66,6 +68,8 @@ sub perl2json_chars_for_record ($) {
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
+        $t =~ s/\x{2028}/\\u2028/g;
+        $t =~ s/\x{2029}/\\u2029/g;
     }
     return $t;
 }
@@ -79,6 +83,8 @@ sub perl2json_bytes ($) {
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
+        $t =~ s/\xE2\x80\xA8/\\u2028/g;
+        $t =~ s/\xE2\x80\xA9/\\u2029/g;
     }
     return $t;
 }
@@ -92,6 +98,8 @@ sub perl2json_bytes_for_record ($) {
     if (defined $t) {
         $t =~ s/</\\u003C/g;
         $t =~ s/\+/\\u002B/g;
+        $t =~ s/\xE2\x80\xA8/\\u2028/g;
+        $t =~ s/\xE2\x80\xA9/\\u2029/g;
     }
     return $t;
 }

@@ -15,6 +15,49 @@ The C<JSON::Functions::XS> module provides various useful functions to
 decode or encode JSON data.  These functions are wrappers; actual
 conversion is enforced by the L<JSON::XS> module.
 
+Strictly speaking, C<JSON::Functions::XS> is not just a wrapper for
+L<JSON::XS>, but it adds some modifications to improve
+interoperability, namely:
+
+=over 4
+
+=item - Support for scalar literal values
+
+According to ECMAScript 5.1, i.e. the latest JSON specification, a
+number, string, boolean, or null value can be recognized as valid
+input.
+
+=item - Silent error recovery from fatal errors
+
+In many use cases of JSON parsing, the application don't have to know
+what is exatly wrong with the JSON input but rather the entire
+operation should not die just because the input is invalid.  In such
+an application, ill-formed input is as bad as wrongly-constructed
+well-formed JSON data, such that it has to check the result data
+structure anyway to be error tolerant.  Therefore this module does not
+raise when the input is invalid.  If you'd like to distinguish parse
+errors from application-dependent structural errors, this module would
+not be a choice for you.
+
+=item - Avoiding HTML XSS
+
+To prevent from HTML XSS attacks when the JSON output is
+poorly-labelled, or for legacy-browser users, this module replaces C<<
+< >> characters in JSON output into its escaped form.
+
+=item - Avoiding UTF-7 XSS
+
+To avoid UTF-7 XSS attacks for legacy-browser users, this module
+replaces C<+> characters in JSON output into its escaped form.
+
+=item - JavaScript/JSONP compatbility
+
+To improve JavaScript/JSONP compatibility, this module replaces U+2028
+and U+2029 characters in JSON output, which are not allowed in
+JavaScript string literals, into their escaped forms.
+
+=back
+
 =head1 FUNCTIONS
 
 No function is exposed by default - you have to specify one or more
@@ -102,6 +145,10 @@ First packaged version.
 
 Improved UTF-7 safeness.
 
+=item 1.2 (2012-07-09)
+
+Escapes U+2028 and U+2029 for JavaScript and JSONP compatibility.
+
 =back
 
 =head1 AUTHOR
@@ -111,6 +158,8 @@ Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>
 =head1 LICENSE
 
 Copyright 2009-2011 Hatena <http://www.hatena.ne.jp/>.
+
+Copyright 2012 Wakaba <w@suika.fam.cx>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
