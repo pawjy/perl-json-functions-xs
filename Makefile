@@ -6,31 +6,28 @@ WGET = wget
 
 Makefile-setupenv: Makefile.setupenv
 	$(MAKE) --makefile Makefile.setupenv setupenv-update \
-	    SETUPENV_MIN_REVISION=20120318
+	    SETUPENV_MIN_REVISION=20121008
 
 Makefile.setupenv:
 	$(WGET) -O $@ https://raw.github.com/wakaba/perl-setupenv/master/Makefile.setupenv
 
-lperl local-perl perl-version perl-exec \
-pmb-update pmb-install \
-generatepm: %: Makefile-setupenv
+pmbp-update pmbp-install generatepm: %: Makefile-setupenv
 	$(MAKE) --makefile Makefile.setupenv $@
+
+deps: pmbp-install
 
 ## ------ Tests ------
 
-PROVE = prove
-PERL_VERSION = latest
-PERL_PATH = $(abspath local/perlbrew/perls/perl-$(PERL_VERSION)/bin)
-PERL_ENV = PATH="$(abspath ./local/perl-$(PERL_VERSION)/pm/bin):$(PERL_PATH):$(PATH)" PERL5LIB="$(shell cat config/perl/libs.txt)"
+PROVE = ./prove
 
 test: safetest
 
-test-deps: pmb-install
+test-deps: deps
 
 safetest: test-deps safetest-main
 
 safetest-main:
-	$(PERL_ENV) $(PROVE) t/*.t
+	$(PROVE) t/*.t
 
 ## ------ Packaging ------
 

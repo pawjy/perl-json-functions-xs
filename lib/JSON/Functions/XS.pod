@@ -103,6 +103,16 @@ pretty-printed.
 
 =back
 
+=head1 DEPENDENCY
+
+The module requires L<JSON::XS>, L<Path::Class>, L<Encode>, and
+L<Exporter::Lite>.
+
+The module can be used with Perl 5.8 or later.  Note that older
+versions of Perl (including 5.8) can't handle broken Unicode
+characters well such that not all tests pass.  Therefore use of newer
+versions of Perl is recommended.
+
 =head1 SEE ALSO
 
 L<JSON::XS>.
@@ -159,7 +169,7 @@ Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>
 
 Copyright 2009-2011 Hatena <http://www.hatena.ne.jp/>.
 
-Copyright 2012 Wakaba <w@suika.fam.cx>.
+Copyright 2012 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
