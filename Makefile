@@ -1,50 +1,41 @@
 all:
 
-## ------ Environment ------
-
 WGET = wget
+CURL = curl
+GIT = git
 
-Makefile-setupenv: Makefile.setupenv
-	$(MAKE) --makefile Makefile.setupenv setupenv-update \
-	    SETUPENV_MIN_REVISION=20121008
+updatenightly: local/bin/pmbp.pl
+	$(CURL) https://gist.githubusercontent.com/motemen/667573/raw/git-submodule-track | sh
+	$(GIT) add t_deps/modules
+	perl local/bin/pmbp.pl --update
+	$(GIT) add config
 
-Makefile.setupenv:
-	$(WGET) -O $@ https://raw.github.com/wakaba/perl-setupenv/master/Makefile.setupenv
+## ------ Setup ------
 
-pmbp-update pmbp-install generatepm: %: Makefile-setupenv
-	$(MAKE) --makefile Makefile.setupenv $@
+deps: git-submodules pmbp-install
 
-deps: pmbp-install
+git-submodules:
+	$(GIT) submodule update --init
+
+local/bin/pmbp.pl:
+	mkdir -p local/bin
+	$(WGET) -O $@ https://raw.github.com/wakaba/perl-setupenv/master/bin/pmbp.pl
+pmbp-upgrade: local/bin/pmbp.pl
+	perl local/bin/pmbp.pl --update-pmbp-pl
+pmbp-update: git-submodules pmbp-upgrade
+	perl local/bin/pmbp.pl --update
+pmbp-install: pmbp-upgrade
+	perl local/bin/pmbp.pl --install \
+            --create-perl-command-shortcut perl \
+            --create-perl-command-shortcut prove
 
 ## ------ Tests ------
 
 PROVE = ./prove
 
-test: safetest
+test: test-deps test-main
 
 test-deps: deps
 
-safetest: test-deps safetest-main
-
-safetest-main:
+test-main:
 	$(PROVE) t/*.t
-
-## ------ Packaging ------
-
-GENERATEPM = local/generatepm/bin/generate-pm-package
-
-dist: generatepm
-	$(GENERATEPM) config/dist/json-functions-xs.pi dist/ --generate-json
-
-dist-wakaba-packages: local/wakaba-packages dist
-	cp dist/*.json local/wakaba-packages/data/perl/
-	cp dist/*.tar.gz local/wakaba-packages/perl/
-	cd local/wakaba-packages && $(MAKE) all
-
-local/wakaba-packages: always
-	git clone "git@github.com:wakaba/packages.git" $@ || (cd $@ && git pull)
-	cd $@ && git submodule update --init
-
-always:
-
-## License: Public Domain.
