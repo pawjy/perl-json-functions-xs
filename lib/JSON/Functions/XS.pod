@@ -59,8 +59,8 @@ JavaScript string literals, into their escaped forms.
 
 =head1 FUNCTIONS
 
-No function is exposed by default - you have to specify one or more
-functions to use after the module name:
+Functions are exposed by default.  Instead, you can specify one or
+more functions to use after the module name:
 
   use JSON::Functions::XS qw(json_bytes2perl json_chars2perl);
 
@@ -104,7 +104,7 @@ pretty-printed.
 
 =head1 DEPENDENCY
 
-The module requires L<JSON::XS>, L<Encode>, and L<Exporter::Lite>.
+The module requires L<JSON::XS> and L<Encode>.
 
 The module can be used with Perl 5.8 or later.  Note that older
 versions of Perl (including 5.8) can't handle broken Unicode

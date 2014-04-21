@@ -1,4 +1,3 @@
+Carp
 Encode
-Exporter::Lite
 JSON::XS
-Path::Class
