@@ -23,9 +23,8 @@ interoperability, namely:
 
 =item - Support for scalar literal values
 
-According to ECMAScript 5.1, i.e. the latest JSON specification, a
-number, string, boolean, or null value can be recognized as valid
-input.
+According to ECMA-404 JSON specification, a number, string, boolean,
+or null value can be recognized as valid input.
 
 =item - Silent error recovery from fatal errors
 
@@ -60,8 +59,8 @@ JavaScript string literals, into their escaped forms.
 
 =head1 FUNCTIONS
 
-No function is exposed by default - you have to specify one or more
-functions to use after the module name:
+Functions are exposed by default.  Instead, you can specify one or
+more functions to use after the module name:
 
   use JSON::Functions::XS qw(json_bytes2perl json_chars2perl);
 
@@ -105,8 +104,7 @@ pretty-printed.
 
 =head1 DEPENDENCY
 
-The module requires L<JSON::XS>, L<Path::Class>, L<Encode>, and
-L<Exporter::Lite>.
+The module requires L<JSON::XS> and L<Encode>.
 
 The module can be used with Perl 5.8 or later.  Note that older
 versions of Perl (including 5.8) can't handle broken Unicode
@@ -115,13 +113,8 @@ versions of Perl is recommended.
 
 =head1 SEE ALSO
 
-L<JSON::XS>.
-
-L<Path::Class>.
-
-RFC 4627 (JSON) <http://tools.ietf.org/html/rfc4627>.
-
-ECMAScript5 The JSON Object <http://es5.github.com/#x15.12>.
+ECMA-404 The JSON Data Interchange Format
+<http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf>.
 
 =head1 DEVELOPMENT
 
@@ -139,37 +132,21 @@ Latest version of the module is available from the GitHub repository:
 
 =item Tarball
 
-<http://wakaba.github.com/packages/perl/#JSON-Functions-XS>.
-
-=back
-
-=head1 HISTORY
-
-=over 4
-
-=item 1.0 (2010-08-18)
-
-First packaged version.
-
-=item 1.1 (2011-09-15)
-
-Improved UTF-7 safeness.
-
-=item 1.2 (2012-07-09)
-
-Escapes U+2028 and U+2029 for JavaScript and JSONP compatibility.
+Tarballs of old versions of this module is available at:
+<http://wakaba.github.com/packages/perl/#JSON-Functions-XS>.  Snapshot
+versions are obsolete; use GitHub repository instead.
 
 =back
 
 =head1 AUTHOR
 
-Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>
+Wakaba <wakaba@suikawiki.org>.
 
 =head1 LICENSE
 
 Copyright 2009-2011 Hatena <http://www.hatena.ne.jp/>.
 
-Copyright 2012 Wakaba <wakaba@suikawiki.org>.
+Copyright 2012-2014 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
