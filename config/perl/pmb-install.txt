@@ -2,7 +2,7 @@ Scalar::Util~1.38
 File::Spec~3.47
 Types::Serialiser~1.0
 JSON::XS~3.01
-Encode~2.60
+Encode~2.62
 Filter::Util::Call~1.49
 Algorithm::Diff~1.1902
 Path::Tiny~0.054
@@ -14,4 +14,4 @@ Carp~1.3301
 Text::Diff~1.41
 Test::More~1.001003
 Test::Differences~0.61
-common::sense~3.72
+common::sense~3.73
