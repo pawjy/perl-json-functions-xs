@@ -1,4 +1,4 @@
-Scalar::Util~1.40
+Scalar::Util~1.41
 Capture::Tiny~0.25
 File::Spec~3.47
 Types::Serialiser~1.0
