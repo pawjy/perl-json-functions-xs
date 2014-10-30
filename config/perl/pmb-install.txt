@@ -3,7 +3,7 @@ Capture::Tiny~0.25
 File::Spec~3.47
 Types::Serialiser~1.0
 JSON::XS~3.01
-Encode~2.63
+Encode~2.64
 Filter::Util::Call~1.49
 Algorithm::Diff~1.1902
 Path::Tiny~0.059
