@@ -8,7 +8,7 @@ Filter::Util::Call~1.49
 Algorithm::Diff~1.1903
 Path::Tiny~0.061
 parent~0.228
-AnyEvent~7.07
+AnyEvent~7.08
 Term::ANSIColor~4.03
 Data::Dumper~2.154
 Carp~1.3301
