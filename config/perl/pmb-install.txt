@@ -4,7 +4,7 @@ File::Spec~3.47
 Types::Serialiser~1.0
 JSON::XS~3.01
 Encode~2.67
-Filter::Util::Call~1.51
+Filter::Util::Call~1.52
 Algorithm::Diff~1.1903
 Path::Tiny~0.061
 parent~0.228
@@ -12,7 +12,7 @@ AnyEvent~7.08
 Term::ANSIColor~4.03
 Data::Dumper~2.154
 Carp~1.3301
-Test::More~1.001009
+Test::More~1.001010
 Text::Diff~1.41
 Test::Differences~0.63
 common::sense~3.73
