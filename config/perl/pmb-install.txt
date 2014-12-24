@@ -12,7 +12,7 @@ AnyEvent~7.08
 Term::ANSIColor~4.03
 Data::Dumper~2.154
 Carp~1.3301
-Test::More~1.001011
+Test::More~1.001012
 Text::Diff~1.41
 Test::Differences~0.63
 common::sense~3.73
