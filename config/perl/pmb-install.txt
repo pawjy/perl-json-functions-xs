@@ -6,7 +6,7 @@ JSON::XS~3.01
 Encode~2.74
 Filter::Util::Call~1.54
 Algorithm::Diff~1.1903
-Path::Tiny~0.068
+Path::Tiny~0.070
 parent~0.234
 AnyEvent~7.09
 Term::ANSIColor~4.03
