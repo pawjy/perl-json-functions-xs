@@ -4,7 +4,7 @@ File::Spec~3.47
 Types::Serialiser~1.0
 JSON::XS~3.01
 Encode~2.75
-Filter::Util::Call~1.54
+Filter::Util::Call~1.55
 Algorithm::Diff~1.1903
 Path::Tiny~0.072
 parent~0.234
