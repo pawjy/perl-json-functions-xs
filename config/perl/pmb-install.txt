@@ -13,6 +13,6 @@ Term::ANSIColor~4.03
 Data::Dumper~2.154
 Carp~1.36
 Test::More~1.001014
-Text::Diff~1.41
+Text::Diff~1.43
 Test::Differences~0.63
 common::sense~3.74
