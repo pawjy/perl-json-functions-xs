@@ -1,6 +1,6 @@
 Scalar::Util~1.42
 Capture::Tiny~0.30
-File::Spec~3.47
+File::Spec~3.59
 Types::Serialiser~1.0
 JSON::XS~3.01
 Encode~2.78
