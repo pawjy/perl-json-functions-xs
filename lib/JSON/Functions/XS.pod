@@ -104,17 +104,15 @@ pretty-printed.
 
 =head1 DEPENDENCY
 
-The module requires L<JSON::XS> and L<Encode>.
-
-The module can be used with Perl 5.8 or later.  Note that older
-versions of Perl (including 5.8) can't handle broken Unicode
-characters well such that not all tests pass.  Therefore use of newer
-versions of Perl is recommended.
+The module requires Perl 5.10 or later and modules L<JSON::XS> and
+L<Encode>.
 
 =head1 SEE ALSO
 
 ECMA-404 The JSON Data Interchange Format
 <http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf>.
+
+L<JSON::PS>.
 
 =head1 DEVELOPMENT
 
@@ -130,12 +128,6 @@ Latest version of the module is available from the GitHub repository:
 
 <http://travis-ci.org/wakaba/perl-json-functions-xs>.
 
-=item Tarball
-
-Tarballs of old versions of this module is available at:
-<http://wakaba.github.com/packages/perl/#JSON-Functions-XS>.  Snapshot
-versions are obsolete; use GitHub repository instead.
-
 =back
 
 =head1 AUTHOR
@@ -144,9 +136,9 @@ Wakaba <wakaba@suikawiki.org>.
 
 =head1 LICENSE
 
-Copyright 2009-2011 Hatena <http://www.hatena.ne.jp/>.
+Copyright 2009-2011 Hatena <https://www.hatena.ne.jp/>.
 
-Copyright 2012-2014 Wakaba <wakaba@suikawiki.org>.
+Copyright 2012-2016 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
