@@ -116,6 +116,10 @@ versions of Perl is recommended.
 ECMA-404 The JSON Data Interchange Format
 <http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf>.
 
+L<JSON::PS> <https://github.com/wakaba/perl-json-ps> - A pure Perl
+JSON/Perl convertion functions, whose API is fully compatible with
+this module.
+
 =head1 DEVELOPMENT
 
 Latest version of the module is available from the GitHub repository:
@@ -128,13 +132,7 @@ Latest version of the module is available from the GitHub repository:
 
 =item Travis CI
 
-<http://travis-ci.org/wakaba/perl-json-functions-xs>.
-
-=item Tarball
-
-Tarballs of old versions of this module is available at:
-<http://wakaba.github.com/packages/perl/#JSON-Functions-XS>.  Snapshot
-versions are obsolete; use GitHub repository instead.
+<https://travis-ci.org/wakaba/perl-json-functions-xs>.
 
 =back
 
