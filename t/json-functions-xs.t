@@ -218,8 +218,9 @@ test {
 
 test {
   my $c = shift;
-  is perl2json_chars({qw/a b c/, "\x{3000}\x{D800}"}),
-      qq{{"c":"\x{3000}\x{D800}","a":"b"}};
+  my $actual = perl2json_chars({qw/a b c/, "\x{3000}\x{D800}"});
+  ok $actual eq qq{{"c":"\x{3000}\x{D800}","a":"b"}} ||
+     $actual eq qq{{"a":"b","c":"\x{3000}\x{D800}"}};
   done $c;
 } n => 1;
 

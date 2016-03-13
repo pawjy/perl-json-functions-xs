@@ -104,7 +104,7 @@ pretty-printed.
 
 =head1 DEPENDENCY
 
-The module requires Perl 5.10 or later and modules L<JSON::XS> and
+The module requires Perl 5.14 or later and modules L<JSON::XS> and
 L<Encode>.
 
 =head1 SEE ALSO
