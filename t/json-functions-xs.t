@@ -348,8 +348,9 @@ test {
 
 test {
   my $c = shift;
-  is perl2json_bytes({qw/a b c/, "\x{3000}"}),
-      encode 'utf8', qq'{"c":"\x{3000}","a":"b"}';
+  my $actual = perl2json_bytes({qw/a b c/, "\x{3000}"});
+  ok $actual eq (encode 'utf8', qq'{"c":"\x{3000}","a":"b"}') ||
+     $actual eq (encode 'utf8', qq'{"a":"b","c":"\x{3000}"}');
   done $c;
 } n => 1;
 
