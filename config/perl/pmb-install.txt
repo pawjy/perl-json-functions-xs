@@ -1,5 +1,5 @@
 Scalar::Util~1.45
-Capture::Tiny~0.36
+Capture::Tiny~0.40
 Term::ANSIColor~4.05
 AnyEvent~7.12
 parent~0.234
@@ -14,4 +14,4 @@ Filter::Util::Call~1.55
 Test::Differences~0.64
 common::sense~3.74
 Algorithm::Diff~1.1903
-Path::Tiny~0.090
+Path::Tiny~0.094
