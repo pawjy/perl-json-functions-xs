@@ -4,7 +4,7 @@ Term::ANSIColor~4.05
 AnyEvent~7.12
 parent~0.234
 Types::Serialiser~1.0
-Data::Dumper~2.160
+Data::Dumper~2.161
 JSON::XS~3.02
 Encode~2.84
 Carp~1.38
