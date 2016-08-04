@@ -3,7 +3,7 @@ AnyEvent~7.12
 Capture::Tiny~0.42
 Carp~1.38
 Data::Dumper~2.161
-Encode~2.84
+Encode~2.85
 Filter::Util::Call~1.55
 JSON::XS~3.02
 Path::Tiny~0.096
