@@ -4,12 +4,12 @@ Capture::Tiny~0.44
 Carp~1.38
 Encode~2.87
 Filter::Util::Call~1.55
-JSON::XS~3.02
+JSON::XS~3.03
 Path::Tiny~0.098
 Scalar::Util~1.46
 Term::ANSIColor~4.06
-Test::Builder~1.302062
 Test::Differences~0.64
+Test::More~1.302062
 Text::Diff~1.44
 Types::Serialiser~1.0
 common::sense~3.74
