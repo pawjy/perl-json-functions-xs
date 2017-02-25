@@ -1,6 +1,6 @@
 Algorithm::Diff~1.1903
 AnyEvent~7.13
-Capture::Tiny~0.44
+Capture::Tiny~0.46
 Carp~1.38
 Encode~2.88
 Filter::Util::Call~1.57
