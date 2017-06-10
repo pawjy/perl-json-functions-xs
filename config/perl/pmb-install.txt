@@ -2,7 +2,7 @@ Algorithm::Diff~1.1903
 AnyEvent~7.13
 Capture::Tiny~0.46
 Carp~1.38
-Encode~2.89
+Encode~2.90
 Filter::Util::Call~1.57
 JSON::XS~3.03
 Path::Tiny~0.104
