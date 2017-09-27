@@ -8,8 +8,8 @@ JSON::XS~3.04
 Path::Tiny~0.104
 Scalar::Util~1.49
 Term::ANSIColor~4.06
+Test::Builder~1.302096
 Test::Differences~0.64
-Test::More~1.302096
 Text::Diff~1.45
 Types::Serialiser~1.0
 common::sense~3.74
