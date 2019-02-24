@@ -4,7 +4,7 @@ Capture::Tiny~0.48
 Carp~1.50
 Encode~3.00
 Filter::Util::Call~1.59
-JSON::XS~4.0
+JSON::XS~4.01
 Path::Tiny~0.108
 Scalar::Util~1.50
 Term::ANSIColor~4.06
