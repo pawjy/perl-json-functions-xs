@@ -6,7 +6,7 @@ Encode~3.01
 Filter::Util::Call~1.59
 JSON::XS~4.02
 Path::Tiny~0.108
-Scalar::Util~1.52
+Scalar::Util~1.53
 Term::ANSIColor~4.06
 Test::Builder~1.302168
 Test::Differences~0.67
