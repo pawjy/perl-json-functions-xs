@@ -5,7 +5,7 @@ Carp~1.50
 Encode~3.02
 Filter::Util::Call~1.59
 JSON::XS~4.02
-Path::Tiny~0.110
+Path::Tiny~0.112
 Scalar::Util~1.53
 Term::ANSIColor~5.01
 Test::Builder~1.302171
