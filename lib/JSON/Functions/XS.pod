@@ -116,25 +116,16 @@ L<JSON::PS> <https://github.com/wakaba/perl-json-ps> - A pure Perl
 JSON/Perl convertion functions, whose API is fully compatible with
 this module.
 
-=head1 DEVELOPMENT
-
-Latest version of the module is available from the GitHub repository:
-
-=over 4
-
-=item GitHub
-
-<https://github.com/wakaba/perl-json-functions-xs>.
-
-=item Travis CI
-
-<https://travis-ci.org/wakaba/perl-json-functions-xs>.
-
-=back
-
 =head1 AUTHOR
 
 Wakaba <wakaba@suikawiki.org>.
+
+=head1 HISTORY
+
+This repository was located at
+<https://github.com/wakaba/perl-json-functions-xs> until 18 April
+2023, then transferred to
+<https://github.com/pawjy/perl-json-functions-xs>.
 
 =head1 LICENSE
 
